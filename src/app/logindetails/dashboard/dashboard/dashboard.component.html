@@ -1,5 +1,11 @@
-
 <app-header></app-header>
 
 
-<app-footer></app-footer>
+
+<div>
+
+    <p class="h1">parent works! {{message| json}}</p>
+
+<app-dashboard-child [res]="data" (event1)="method1($event)"></app-dashboard-child> 
+
+</div>

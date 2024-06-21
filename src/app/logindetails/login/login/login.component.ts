@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-//import { ForgetPasswordComponent } from '../forget-password/forget-password.component';
-import { Router } from '@angular/router';
-
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,71 +7,54 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
-  isSignup: boolean=true;
-
-isLogin: boolean=true;
-
-
-firstname:string='';
-email:string='';
-mobile: string='';
-password: string='';
-country: string='';
-countries: string[]=[
-  'United States','Canda','Untited Kingdom','Australia','Germany','France','India','China','Japan','Brazil'
-];
-
-
   loginForm: FormGroup;
-  
-  signupForm: FormGroup;
+  signUpForm: FormGroup;
+  forgetPasswordForm: FormGroup;
+  isSignUp = false;
+  isForgetPasswordPopupOpen = false;
 
-  constructor(private fb: FormBuilder,public dialog:MatDialog, private router:Router) {
+  constructor(private fb: FormBuilder) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
-    
-      });
-      this.signupForm=this.fb.group({
-        firstname:['',[Validators.required]],
-        email: ['', [Validators.required, Validators.email]],
-        mobile:['',[Validators.required]],
-        password:['', [Validators.required, Validators.minLength(6)]]
-      });
+      email: [''],
+      password: ['']
+    });
+
+    this.signUpForm = this.fb.group({
+      firstname: [''],
+      email: [''],
+      mobile: [''],
+      password: [''],
+      country: ['']
+    });
+
+    this.forgetPasswordForm = this.fb.group({
+      email: [''],
+      newPassword: [''],
+      confirmPassword: ['']
+    });
   }
 
-  onSubmit() {
-    if (this.loginForm.valid) {
-      console.log('Validation succesfully', this.loginForm.value);
-      alert("Login Successfully");
-      this.router.navigateByUrl("/dashboard")
-    }
+  onLogin() {
+    console.log('Login Form Data:', this.loginForm.value);
   }
 
-
-  
-  toggleSignup(){
-    this.isSignup=!this.isSignup;
+  onSignUp() {
+    console.log('Sign Up Form Data:', this.signUpForm.value);
   }
 
-  signup(){
-    if (this.signupForm.valid) {
-      console.log('Validation succesfully', this.signupForm.value);
-      alert("Signup Successfully");
-      this.isSignup=!this.isLogin;
-    }
-  }
-  loginClick(){
-    this.isLogin=true
-    this.isSignup=false;
+  toggleSignUp() {
+    this.isSignUp = !this.isSignUp;
   }
 
-  signupClick(){
-    this.isLogin=false;
-    this.isSignup=true;
+  openForgetPasswordPopup() {
+    this.isForgetPasswordPopupOpen = true;
   }
 
+  onForgetPassword() {
+    console.log('Forget Password Form Data:', this.forgetPasswordForm.value);
+    this.isForgetPasswordPopupOpen = false;
+  }
 }
+
 
 

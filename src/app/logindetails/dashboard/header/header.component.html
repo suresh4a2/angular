@@ -1,5 +1,13 @@
-<div>
-<a href="/login">login</a>
-
-<a href="/login">home</a>
-</div>
+<mat-toolbar color="primary">
+    <mat-icon> <a [routerLink]="['/']" class="primary"></a></mat-icon>
+    <div class="logo">Logo</div>
+    <div class="extra"></div>
+    <mat-icon> <a [routerLink]="['/login']" class="primary">login</a></mat-icon>
+    <div class="login">Login</div>
+    <mat-icon> <a [routerLink]="['/home']" class="primary">home</a></mat-icon>
+    <div class="home">Home</div>
+    <mat-icon> <a [routerLink]="['/contact']" class="primary">contacts</a></mat-icon>
+    <div class="contacts">Contacts</div>
+    
+   
+  </mat-toolbar>

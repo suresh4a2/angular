@@ -12,12 +12,14 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
  
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    ForgetPasswordComponent
   ],
   imports: [
     CommonModule,
